@@ -5,15 +5,71 @@ import { useAppContext } from '../context/AppContext.jsx';
 
 const Navbar = () => {
     const [open, setOpen] = React.useState(false);
+    const [showProfileMenu, setShowProfileMenu] = React.useState(false);
+    const [showCartMenu, setShowCartMenu] = React.useState(false);
+    const profileMenuRef = React.useRef(null);
+    const cartMenuRef = React.useRef(null);
     const { user, setUser, setShowUserLogin, navigate } = useAppContext();
+
+    const dummyCartItems = [
+        { id: 1, name: 'Organic Almonds', price: 24, qty: 2 },
+        { id: 2, name: 'Herbal Tea', price: 18, qty: 1 },
+    ];
+
+    const cartCount = dummyCartItems.reduce((total, item) => total + item.qty, 0);
+    const totalCartAmount = dummyCartItems.reduce((total, item) => total + item.price * item.qty, 0);
+    const profileName = user?.name || user?.email?.split('@')[0] || 'User';
+    const profileInitial = profileName.charAt(0).toUpperCase();
+    const profileImage = user?.avatar || user?.image || null;
 
     const logout = async () => {
         setUser(null);
-        navigate('/');
+        setShowProfileMenu(false);
+        setShowCartMenu(false);
         setOpen(false);
+        navigate('/');
     };
 
-    const closeMenu = () => setOpen(false);
+    const closeMenu = () => {
+        setOpen(false);
+        setShowProfileMenu(false);
+        setShowCartMenu(false);
+    };
+
+    const handleLogin = () => {
+        setOpen(false);
+        setShowUserLogin(true);
+    };
+
+    const toggleProfileMenu = () => {
+        setShowProfileMenu((prev) => !prev);
+        setShowCartMenu(false);
+    };
+
+    const toggleCartMenu = () => {
+        setShowCartMenu((prev) => !prev);
+        setShowProfileMenu(false);
+    };
+
+    const goToMyOrders = () => {
+        setShowProfileMenu(false);
+        setOpen(false);
+        navigate('/my-orders');
+    };
+
+    React.useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (profileMenuRef.current && !profileMenuRef.current.contains(event.target)) {
+                setShowProfileMenu(false);
+            }
+            if (cartMenuRef.current && !cartMenuRef.current.contains(event.target)) {
+                setShowCartMenu(false);
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => document.removeEventListener('mousedown', handleClickOutside);
+    }, []);
 
     return (
         <nav className="flex items-center justify-between px-6 md:px-16 lg:px-24 xl:px-32 py-4 border-b border-gray-300 bg-white relative transition-all">
@@ -23,7 +79,7 @@ const Navbar = () => {
                 <span className="hidden md:inline text-lg font-bold text-primary">NatureBite</span>
             </NavLink>
 
-            {/* Mobile Menu Button - Visible on screens < lg (< 1024px) */}
+            {/* Mobile Menu Button */}
             <button
                 type="button"
                 aria-label="Menu"
@@ -38,7 +94,7 @@ const Navbar = () => {
                 </svg>
             </button>
 
-            {/* Mobile Menu - Visible on screens < lg (< 1024px) */}
+            {/* Mobile Menu */}
             <div
                 className={`lg:hidden absolute top-[60px] left-0 w-full bg-white shadow-md py-4 flex flex-col items-center gap-2 px-5 text-sm z-50 ${open ? 'flex' : 'hidden'}`}
             >
@@ -46,12 +102,10 @@ const Navbar = () => {
                 <NavLink to="/products" onClick={closeMenu} className="w-full py-2 text-center hover:text-primary">All Products</NavLink>
                 <NavLink to="/contact" onClick={closeMenu} className="w-full py-2 text-center hover:text-primary">Contact</NavLink>
 
-                {/* Show My Orders only if user is logged in */}
                 {user && (
                     <NavLink to="/my-orders" onClick={closeMenu} className="w-full py-2 text-center hover:text-primary">My Orders</NavLink>
                 )}
 
-                {/* Mobile Search Bar */}
                 <div className="w-full flex items-center text-sm gap-2 border border-gray-300 px-3 rounded-full my-2">
                     <input
                         className="py-1.5 w-full bg-transparent outline-none placeholder-gray-500"
@@ -70,41 +124,97 @@ const Navbar = () => {
                     </svg>
                 </div>
 
+                <div ref={cartMenuRef} className="w-full">
+                    <button
+                        type="button"
+                        onClick={toggleCartMenu}
+                        className="w-full flex items-center justify-between px-4 py-2 rounded-full border border-gray-300 text-sm"
+                    >
+                        <span>Cart</span>
+                        <span className="bg-primary text-white rounded-full px-2.5 py-0.5">{cartCount}</span>
+                    </button>
+                    {showCartMenu && (
+                        <div className="mt-2 rounded-xl border border-gray-200 bg-white p-3 shadow-md">
+                            <div className="flex items-center justify-between mb-2">
+                                <p className="font-semibold">Your Cart</p>
+                                <span className="text-xs text-gray-500">{dummyCartItems.length} items</span>
+                            </div>
+                            {dummyCartItems.map((item) => (
+                                <div key={item.id} className="flex items-center justify-between text-sm py-1">
+                                    <div>
+                                        <p className="font-medium">{item.name}</p>
+                                        <p className="text-gray-500">Qty {item.qty}</p>
+                                    </div>
+                                    <p className="font-medium">${item.price * item.qty}</p>
+                                </div>
+                            ))}
+                            <div className="mt-2 border-t border-gray-200 pt-2 flex items-center justify-between text-sm font-semibold">
+                                <span>Subtotal</span>
+                                <span>${totalCartAmount}</span>
+                            </div>
+                        </div>
+                    )}
+                </div>
+
                 {!user ? (
                     <button
                         type="button"
-                        onClick={() => {
-                            setOpen(false);
-                            setShowUserLogin(true);
-                        }}
+                        onClick={handleLogin}
                         className="cursor-pointer px-6 py-2 mt-2 bg-primary hover:bg-primary-dull transition text-white rounded-full text-sm w-full"
                     >
                         Login
                     </button>
                 ) : (
-                    <button
-                        type="button"
-                        onClick={logout}
-                        className="cursor-pointer px-6 py-2 mt-2 bg-primary hover:bg-primary-dull transition text-white rounded-full text-sm w-full"
-                    >
-                        Logout
-                    </button>
+                    <div ref={profileMenuRef} className="w-full">
+                        <button
+                            type="button"
+                            onClick={toggleProfileMenu}
+                            className="flex items-center justify-center gap-2 w-full py-2"
+                        >
+                            {profileImage ? (
+                                <img src={profileImage} alt="profile" className="w-9 h-9 rounded-full object-cover border border-gray-300" />
+                            ) : (
+                                <div className="w-9 h-9 rounded-full bg-primary text-white flex items-center justify-center font-semibold">
+                                    {profileInitial}
+                                </div>
+                            )}
+                            <span className="text-sm font-medium">{profileName}</span>
+                        </button>
+
+                        {showProfileMenu && (
+                            <div className="mt-2 w-full rounded-xl border border-gray-200 bg-white shadow-md">
+                                <button
+                                    type="button"
+                                    onClick={goToMyOrders}
+                                    className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-100"
+                                >
+                                    My Orders
+                                </button>
+                                <button
+                                    type="button"
+                                    onClick={logout}
+                                    className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-100"
+                                >
+                                    Logout
+                                </button>
+                            </div>
+                        )}
+                    </div>
                 )}
             </div>
 
-            {/* Desktop Menu - Visible on screens >= lg (>= 1024px) */}
+            {/* Desktop Menu */}
             <div className="hidden lg:flex items-center justify-center gap-8 flex-1">
                 <NavLink to="/" className="hover:text-primary">Home</NavLink>
                 <NavLink to="/products" className="hover:text-primary">All Products</NavLink>
                 <NavLink to="/contact" className="hover:text-primary">Contact</NavLink>
 
-                {/* Show My Orders only if user is logged in */}
                 {user && (
                     <NavLink to="/my-orders" className="hover:text-primary">My Orders</NavLink>
                 )}
             </div>
 
-            {/* Right Side Items - Visible on screens >= lg (>= 1024px) */}
+            {/* Right Side Items */}
             <div className="hidden lg:flex items-center gap-6">
                 {/* Search Bar */}
                 <div className="flex items-center text-sm gap-2 border border-gray-300 px-3 rounded-full">
@@ -126,32 +236,88 @@ const Navbar = () => {
                 </div>
 
                 {/* Cart Icon */}
-                <div className="relative cursor-pointer">
-                    <svg width="18" height="18" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M.583.583h2.333l1.564 7.81a1.17 1.17 0 0 0 1.166.94h5.67a1.17 1.17 0 0 0 1.167-.94l.933-4.893H3.5m2.333 8.75a.583.583 0 1 1-1.167 0 .583.583 0 0 1 1.167 0m6.417 0a.583.583 0 1 1-1.167 0 .583.583 0 0 1 1.167 0" stroke="#615fff" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                    <button type="button" className="absolute -top-2 -right-3 text-xs text-white bg-primary w-[18px] h-[18px] rounded-full flex items-center justify-center">
-                        9
+                <div ref={cartMenuRef} className="relative">
+                    <button
+                        type="button"
+                        onClick={toggleCartMenu}
+                        className="relative cursor-pointer"
+                    >
+                        <svg width="18" height="18" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M.583.583h2.333l1.564 7.81a1.17 1.17 0 0 0 1.166.94h5.67a1.17 1.17 0 0 0 1.167-.94l.933-4.893H3.5m2.333 8.75a.583.583 0 1 1-1.167 0 .583.583 0 0 1 1.167 0m6.417 0a.583.583 0 1 1-1.167 0 .583.583 0 0 1 1.167 0" stroke="#615fff" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                        <span className="absolute -top-2 -right-3 text-xs text-white bg-primary w-[18px] h-[18px] rounded-full flex items-center justify-center">
+                            {cartCount}
+                        </span>
                     </button>
+
+                    {showCartMenu && (
+                        <div className="absolute right-0 mt-3 w-72 rounded-xl border border-gray-200 bg-white p-3 shadow-xl z-50">
+                            <div className="flex items-center justify-between mb-2">
+                                <p className="font-semibold">Your Cart</p>
+                                <span className="text-xs text-gray-500">{dummyCartItems.length} items</span>
+                            </div>
+                            {dummyCartItems.map((item) => (
+                                <div key={item.id} className="flex items-center justify-between text-sm py-1">
+                                    <div>
+                                        <p className="font-medium">{item.name}</p>
+                                        <p className="text-gray-500">Qty {item.qty}</p>
+                                    </div>
+                                    <p className="font-medium">${item.price * item.qty}</p>
+                                </div>
+                            ))}
+                            <div className="mt-2 border-t border-gray-200 pt-2 flex items-center justify-between text-sm font-semibold">
+                                <span>Subtotal</span>
+                                <span>${totalCartAmount}</span>
+                            </div>
+                        </div>
+                    )}
                 </div>
 
-                {/* Auth Buttons */}
+                {/* Auth/Profile */}
                 {!user ? (
                     <button
                         type="button"
-                        onClick={() => setShowUserLogin(true)}
+                        onClick={handleLogin}
                         className="cursor-pointer px-8 py-2 bg-primary hover:bg-primary-dull transition text-white rounded-full"
                     >
                         Login
                     </button>
                 ) : (
-                    <button
-                        type="button"
-                        onClick={logout}
-                        className="cursor-pointer px-8 py-2 bg-primary hover:bg-primary-dull transition text-white rounded-full"
-                    >
-                        Logout
-                    </button>
+                    <div ref={profileMenuRef} className="relative">
+                        <button
+                            type="button"
+                            onClick={toggleProfileMenu}
+                            className="flex items-center gap-2"
+                        >
+                            {profileImage ? (
+                                <img src={profileImage} alt="profile" className="w-9 h-9 rounded-full object-cover border border-gray-300" />
+                            ) : (
+                                <div className="w-9 h-9 rounded-full bg-primary text-white flex items-center justify-center font-semibold">
+                                    {profileInitial}
+                                </div>
+                            )}
+                            <span className="text-sm font-medium text-gray-700">{profileName}</span>
+                        </button>
+
+                        {showProfileMenu && (
+                            <div className="absolute right-0 mt-3 w-44 rounded-xl border border-gray-200 bg-white shadow-xl z-50">
+                                <button
+                                    type="button"
+                                    onClick={goToMyOrders}
+                                    className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-100"
+                                >
+                                    My Orders
+                                </button>
+                                <button
+                                    type="button"
+                                    onClick={logout}
+                                    className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-100"
+                                >
+                                    Logout
+                                </button>
+                            </div>
+                        )}
+                    </div>
                 )}
             </div>
         </nav>
