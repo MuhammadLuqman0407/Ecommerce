@@ -9,7 +9,15 @@ import bottles_image from './bottles_image.png';
 import dairy_product_image from '../assets/dairy_product_image.png';
 import bakery_image from '../assets/bakery_image.png';
 import maggi_image from '../assets/maggi_image.png';
-import grain_image from '../assets/grain_image.png'
+import grain_image from '../assets/grain_image.png';
+import tomato_image from '../assets/Tomato_image.png';
+import potato_image from '../assets/Potato_image.png';
+import onion_image from '../assets/Onion_image.png';
+import carrot_image from '../assets/carrot_image.png';
+import spanish_image from '../assets/Spanish_image.png';
+import cart from '../assets/Cart.png';
+import star from '../assets/star.svg';
+
 
 export const assets = {
     logo,
@@ -22,7 +30,13 @@ export const assets = {
     bakery_image,
     maggi_image,
     grain_image,
-
+    tomato_image,
+    potato_image,
+    onion_image,
+    carrot_image,
+    spanish_image,
+    cart,
+    star,
 
 }
 
@@ -71,3 +85,92 @@ export const categories = [
         bgColor: "#f7bcf3",
     }
 ]
+
+export const dummyProducts = [
+  // Vegetables
+
+  {
+    _id: "veg001",
+    name: "Potato 500g",
+    category: "Vegetables",
+    price: 40,
+    offerPrice: 35,
+    image: [potato_image],
+    description: [
+      "Fresh and organic",
+      "Rich in carbohydrates",
+      "Ideal for curries and fries"
+    ],
+    createdAt: "2025-03-25T07:17:46.018Z",
+    updatedAt: "2025-03-25T07:18:13.103Z",
+    inStock: true,
+  },
+
+  {
+    _id: "veg002",
+    name: "Tomato 1kg",
+    category: "Vegetables",
+    price: 30,
+    offerPrice: 28,
+    image: [tomato_image],
+    description: [
+      "Farm fresh tomatoes",
+      "Rich in Vitamin C",
+      "Perfect for salads and cooking"
+    ],
+    createdAt: "2025-03-25T07:17:46.018Z",
+    updatedAt: "2025-03-25T07:18:13.103Z",
+    inStock: true,
+  },
+
+  {
+    _id: "veg003",
+    name: "Carrot 500g",
+    category: "Vegetables",
+    price: 50,
+    offerPrice: 44,
+    image: [carrot_image],
+    description: [
+      "Fresh organic carrots",
+      "High in Vitamin A",
+      "Sweet and crunchy"
+    ],
+    createdAt: "2025-03-25T07:17:46.018Z",
+    updatedAt: "2025-03-25T07:18:13.103Z",
+    inStock: true,
+  },
+
+  {
+    _id: "veg004",
+    name: "Spinach 500g",
+    category: "Vegetables",
+    price: 25,
+    offerPrice: 20,
+    image: [spanish_image],
+    description: [
+      "Fresh green leaves",
+      "Rich in iron and calcium",
+      "Ideal for healthy meals"
+    ],
+    createdAt: "2025-03-25T07:17:46.018Z",
+    updatedAt: "2025-03-25T07:18:13.103Z",
+    inStock: true,
+  },
+
+  {
+    _id: "veg005",
+    name: "Onion 500g",
+    category: "Vegetables",
+    price: 35,
+    offerPrice: 30,
+    image: [onion_image],
+    description: [
+      "Fresh red onions",
+      "Strong natural flavor",
+      "Essential for daily cooking"
+    ],
+    createdAt: "2025-03-25T07:17:46.018Z",
+    updatedAt: "2025-03-25T07:18:13.103Z",
+    inStock: true,
+  },
+];
