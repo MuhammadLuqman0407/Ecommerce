@@ -9,15 +9,19 @@ const Navbar = () => {
     const [showCartMenu, setShowCartMenu] = React.useState(false);
     const profileMenuRef = React.useRef(null);
     const cartMenuRef = React.useRef(null);
-    const { user, setUser, setShowUserLogin, navigate } = useAppContext();
+    const { user, setUser, setShowUserLogin, navigate, cartItems, products, currency } = useAppContext();
 
-    const dummyCartItems = [
-        { id: 1, name: 'Organic Almonds', price: 24, qty: 2 },
-        { id: 2, name: 'Herbal Tea', price: 18, qty: 1 },
-    ];
+    const cartCount = Object.values(cartItems).reduce((sum, qty) => sum + qty, 0);
 
-    const cartCount = dummyCartItems.reduce((total, item) => total + item.qty, 0);
-    const totalCartAmount = dummyCartItems.reduce((total, item) => total + item.price * item.qty, 0);
+    const cartProducts = Object.entries(cartItems)
+        .map(([itemId, qty]) => {
+            const product = products.find((item) => item._id === itemId);
+            return product ? { ...product, qty } : null;
+        })
+        .filter(Boolean);
+
+    const totalCartAmount = cartProducts.reduce((sum, item) => sum + item.offerPrice * item.qty, 0);
+
     const profileName = user?.name || user?.email?.split('@')[0] || 'User';
     const profileInitial = profileName.charAt(0).toUpperCase();
     const profileImage = user?.avatar || user?.image || null;
@@ -73,13 +77,11 @@ const Navbar = () => {
 
     return (
         <nav className="flex items-center justify-between px-6 md:px-16 lg:px-24 xl:px-32 py-4 border-b border-gray-300 bg-white relative transition-all">
-            {/* Logo with Text */}
             <NavLink to="/" onClick={closeMenu} className="flex-shrink-0 flex items-center gap-2">
                 <img className="h-9" src={assets.logo} alt="logo" />
                 <span className="hidden md:inline text-lg font-bold text-primary">NatureBite</span>
             </NavLink>
 
-            {/* Mobile Menu Button */}
             <button
                 type="button"
                 aria-label="Menu"
@@ -94,7 +96,6 @@ const Navbar = () => {
                 </svg>
             </button>
 
-            {/* Mobile Menu */}
             <div
                 className={`lg:hidden absolute top-[60px] left-0 w-full bg-white shadow-md py-4 flex flex-col items-center gap-2 px-5 text-sm z-50 ${open ? 'flex' : 'hidden'}`}
             >
@@ -137,20 +138,26 @@ const Navbar = () => {
                         <div className="mt-2 rounded-xl border border-gray-200 bg-white p-3 shadow-md">
                             <div className="flex items-center justify-between mb-2">
                                 <p className="font-semibold">Your Cart</p>
-                                <span className="text-xs text-gray-500">{dummyCartItems.length} items</span>
+                                <span className="text-xs text-gray-500">{cartCount} items</span>
                             </div>
-                            {dummyCartItems.map((item) => (
-                                <div key={item.id} className="flex items-center justify-between text-sm py-1">
-                                    <div>
-                                        <p className="font-medium">{item.name}</p>
-                                        <p className="text-gray-500">Qty {item.qty}</p>
+
+                            {cartProducts.length === 0 ? (
+                                <p className="text-sm text-gray-500">Your cart is empty.</p>
+                            ) : (
+                                cartProducts.map((item) => (
+                                    <div key={item._id} className="flex items-center justify-between text-sm py-1">
+                                        <div>
+                                            <p className="font-medium">{item.name}</p>
+                                            <p className="text-gray-500">Qty {item.qty}</p>
+                                        </div>
+                                        <p className="font-medium">{currency}${item.offerPrice * item.qty}</p>
                                     </div>
-                                    <p className="font-medium">${item.price * item.qty}</p>
-                                </div>
-                            ))}
+                                ))
+                            )}
+
                             <div className="mt-2 border-t border-gray-200 pt-2 flex items-center justify-between text-sm font-semibold">
                                 <span>Subtotal</span>
-                                <span>${totalCartAmount}</span>
+                                <span>{currency}${totalCartAmount}</span>
                             </div>
                         </div>
                     )}
@@ -203,7 +210,6 @@ const Navbar = () => {
                 )}
             </div>
 
-            {/* Desktop Menu */}
             <div className="hidden lg:flex items-center justify-center gap-8 flex-1">
                 <NavLink to="/" className="hover:text-primary">Home</NavLink>
                 <NavLink to="/products" className="hover:text-primary">All Products</NavLink>
@@ -214,9 +220,7 @@ const Navbar = () => {
                 )}
             </div>
 
-            {/* Right Side Items */}
             <div className="hidden lg:flex items-center gap-6">
-                {/* Search Bar */}
                 <div className="flex items-center text-sm gap-2 border border-gray-300 px-3 rounded-full">
                     <input
                         className="py-1.5 w-32 bg-transparent outline-none placeholder-gray-500"
@@ -235,7 +239,6 @@ const Navbar = () => {
                     </svg>
                 </div>
 
-                {/* Cart Icon */}
                 <div ref={cartMenuRef} className="relative">
                     <button
                         type="button"
@@ -254,26 +257,31 @@ const Navbar = () => {
                         <div className="absolute right-0 mt-3 w-72 rounded-xl border border-gray-200 bg-white p-3 shadow-xl z-50">
                             <div className="flex items-center justify-between mb-2">
                                 <p className="font-semibold">Your Cart</p>
-                                <span className="text-xs text-gray-500">{dummyCartItems.length} items</span>
+                                <span className="text-xs text-gray-500">{cartCount} items</span>
                             </div>
-                            {dummyCartItems.map((item) => (
-                                <div key={item.id} className="flex items-center justify-between text-sm py-1">
-                                    <div>
-                                        <p className="font-medium">{item.name}</p>
-                                        <p className="text-gray-500">Qty {item.qty}</p>
+
+                            {cartProducts.length === 0 ? (
+                                <p className="text-sm text-gray-500">Your cart is empty.</p>
+                            ) : (
+                                cartProducts.map((item) => (
+                                    <div key={item._id} className="flex items-center justify-between text-sm py-1">
+                                        <div>
+                                            <p className="font-medium">{item.name}</p>
+                                            <p className="text-gray-500">Qty {item.qty}</p>
+                                        </div>
+                                        <p className="font-medium">{currency}${item.offerPrice * item.qty}</p>
                                     </div>
-                                    <p className="font-medium">${item.price * item.qty}</p>
-                                </div>
-                            ))}
+                                ))
+                            )}
+
                             <div className="mt-2 border-t border-gray-200 pt-2 flex items-center justify-between text-sm font-semibold">
                                 <span>Subtotal</span>
-                                <span>${totalCartAmount}</span>
+                                <span>{currency}${totalCartAmount}</span>
                             </div>
                         </div>
                     )}
                 </div>
 
-                {/* Auth/Profile */}
                 {!user ? (
                     <button
                         type="button"
