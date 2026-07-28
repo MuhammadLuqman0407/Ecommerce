@@ -4,16 +4,16 @@ import { Link } from 'react-router-dom';
 
 const MainBanner = () => {
   return (
-    <div className="relative w-full overflow-hidden">
+    <div className="relative w-full overflow-hidden py-4.5">
       <img
         src={assets.main_banner_bg}
         alt="banner_large_screen"
-        className="hidden md:block w-full h-[520px] object-cover rounded-[32px]"
+        className="hidden md:block w-full h-[520px] object-cover rounded-[20px]"
       />
       <img
         src={assets.main_banner_bg_sm}
         alt="banner_small_screen"
-        className="block md:hidden w-full h-[480px] object-cover rounded-[24px]"
+        className="block md:hidden w-full h-[480px] object-cover rounded-[20px]"
       />
 
       <div className="absolute inset-0 flex items-end md:items-center justify-center md:justify-start">
