@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import {Route, Routes, useLocation} from 'react-router-dom'
 import {Toaster} from "react-hot-toast";
 import BottomBanner from "./components/BottomBanner";
+import NewLetter from "./components/NewLetter";
 
 function App() {
   const isSellerPath = useLocation().pathname.includes("seller");
@@ -23,6 +24,7 @@ function App() {
                 <Categories />
                 <BestSeller />
                 <BottomBanner />
+                <NewLetter />
               </>
             }
           />
