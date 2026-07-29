@@ -17,6 +17,11 @@ import carrot_image from '../assets/carrot_image.png';
 import spanish_image from '../assets/Spanish_image.png';
 import cart from '../assets/Cart.png';
 import star from '../assets/star.svg';
+import bottom_banner_image from '../assets/bottom_banner_image.png';
+import bottom_banner_image_sm from '../assets/bottom_banner_image_sm.png';
+import coin_icon from '../assets/coin_icon.svg';
+import leaf_icon from '../assets/leaf_icon.svg';
+import delivery_truck from '../assets/delivery_truck_icon.svg';
 
 
 export const assets = {
@@ -37,6 +42,11 @@ export const assets = {
     spanish_image,
     cart,
     star,
+    bottom_banner_image,
+    bottom_banner_image_sm,
+    leaf_icon,
+    coin_icon,
+    delivery_truck,
 
 }
 
@@ -174,3 +184,22 @@ export const dummyProducts = [
     inStock: true,
   },
 ];
+
+
+export const features = [
+  {
+    icon: delivery_truck,
+    title: "Fastest Delivery",
+    description: "Groceries delivered in under 30 minutes.",
+  },
+  {
+    icon: leaf_icon,
+    title: "Freshness Guaranteed",
+    description: "Fresh produce straight from the source.",
+  },
+  {
+    icon: coin_icon,
+    title: "Affordablle Prices",
+    description: "Quality groceries at unbeatable prices.",
+  }
+]

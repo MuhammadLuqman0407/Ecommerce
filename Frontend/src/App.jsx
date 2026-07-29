@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import {Route, Routes, useLocation} from 'react-router-dom'
 import {Toaster} from "react-hot-toast";
+import BottomBanner from "./components/BottomBanner";
 
 function App() {
   const isSellerPath = useLocation().pathname.includes("seller");
@@ -21,6 +22,7 @@ function App() {
                 <Home />
                 <Categories />
                 <BestSeller />
+                <BottomBanner />
               </>
             }
           />

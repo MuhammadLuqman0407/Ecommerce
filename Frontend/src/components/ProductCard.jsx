@@ -1,3 +1,4 @@
+
 import React from 'react'
 import { assets } from '../assets/assets'
 import { useAppContext } from '../context/AppContext'
@@ -9,7 +10,7 @@ const ProductCard = ({ product }) => {
     if (!product) return null
 
     return product && (
-        <div className="border border-gray-200 rounded-3xl bg-white w-full min-w-[220px] max-w-[260px] overflow-hidden shadow-sm">
+        <div className="border border-gray-200 rounded-3xl bg-white w-full max-w-[260px] mx-auto overflow-hidden shadow-sm">
             <div className="group flex items-center justify-center p-4">
                 <img
                     className="h-32 md:h-36 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
