@@ -13,7 +13,7 @@ const BottomBanner = () => {
         <img
           src={assets.bottom_banner_image_sm}
           alt='banner'
-          className='block md:hidden w-full h-auto max-h-[550px] object-cover'
+          className='block md:hidden w-full h-auto max-h-[715px] object-cover'
         />
       </div>
 
