@@ -9,6 +9,7 @@ import NewLetter from "./components/NewLetter";
 import Footer from "./components/Footer";
 import { useAppContext } from "./context/AppContext";
 import Login from "./components/Login";
+import AllProducts from "./pages/AllProducts";
 
 function App() {
   const isSellerPath = useLocation().pathname.includes("seller");
@@ -21,19 +22,8 @@ function App() {
       <Toaster />
       <div className={`${isSellerPath ? "" : "px-4 sm:px-6 md:px-12 lg:px-20 xl:px-28 2xl:px-32"}`}>
         <Routes>
-          <Route
-            path="/"
-            element={
-              <>
-                <Home />
-                <Categories />
-                <BestSeller />
-                <BottomBanner />
-                <NewLetter />
-                {/* <Footer /> */}
-              </>
-            }
-          />
+          <Route path="/" element={  <Home />}   />
+          <Route path="/products" element={<AllProducts />} />
         </Routes>
       </div>
       {!isSellerPath && <Footer />}

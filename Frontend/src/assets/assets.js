@@ -183,6 +183,22 @@ export const dummyProducts = [
     updatedAt: "2025-03-25T07:18:13.103Z",
     inStock: true,
   },
+  {
+    _id: "veg006",
+    name: "Apple 1kg",
+    category: "Fruits",
+    price: 50,
+    offerPrice: 40,
+    image: [onion_image],
+    description: [
+      "Fresh red apples",
+      "Strong natural flavor",
+      "Essential for daily cooking"
+    ],
+    createdAt: "2025-03-25T07:17:46.018Z",
+    updatedAt: "2025-03-25T07:18:13.103Z",
+    inStock: true,
+  },
 ];
 
 
