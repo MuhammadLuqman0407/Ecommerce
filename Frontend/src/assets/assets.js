@@ -22,7 +22,22 @@ import bottom_banner_image_sm from '../assets/bottom_banner_image_sm.png';
 import coin_icon from '../assets/coin_icon.svg';
 import leaf_icon from '../assets/leaf_icon.svg';
 import delivery_truck from '../assets/delivery_truck_icon.svg';
-
+import banana from '../assets/banana.png';
+import barley from '../assets/barley.png';
+import brown_rice from '../assets/brown_rice.png';
+import butter_croissant from '../assets/butter_croissant.png';
+import cheeze from '../assets/cheeze.png';
+import coca_cola from '../assets/coca_cola.png';
+import eggs from '../assets/eggs.png';
+import fanta from '../assets/fanta.png';
+import knoor_cup_soup from '../assets/knoor_cup_soup.png';
+import grapes from '../assets/grapes.png';
+import mango from '../assets/Mangos.png';
+import orange from '../assets/orange.png';
+import paneer from '../assets/paneer.png';
+import sprite from '../assets/sprite.png';
+import wheet_floor from '../assets/Wheet_floor.png';
+import apples from '../assets/apples.png';
 
 export const assets = {
     logo,
@@ -47,6 +62,22 @@ export const assets = {
     leaf_icon,
     coin_icon,
     delivery_truck,
+    banana,
+    barley,
+    brown_rice,
+    butter_croissant,
+    cheeze,
+    coca_cola,
+    eggs,
+    fanta,
+    knoor_cup_soup,
+    grapes,
+    mango,
+    orange,
+    paneer,
+    sprite,
+    wheet_floor,
+    apples,
 
 }
 
@@ -184,12 +215,12 @@ export const dummyProducts = [
     inStock: true,
   },
   {
-    _id: "veg006",
+    _id: "fru001",
     name: "Apple 1kg",
     category: "Fruits",
     price: 50,
     offerPrice: 40,
-    image: [onion_image],
+    image: [apples],
     description: [
       "Fresh red apples",
       "Strong natural flavor",
@@ -199,6 +230,71 @@ export const dummyProducts = [
     updatedAt: "2025-03-25T07:18:13.103Z",
     inStock: true,
   },
+   {
+    _id: "fru002",
+    name: "Mangoes 1kg",
+    category: "Fruits",
+    price: 50,
+    offerPrice: 40,
+    image: [mango],
+    description: [
+      "Fresh red apples",
+      "Strong natural flavor",
+      "Essential for daily cooking"
+    ],
+    createdAt: "2025-03-25T07:17:46.018Z",
+    updatedAt: "2025-03-25T07:18:13.103Z",
+    inStock: true,
+  },
+  {
+    _id: "fru003",
+    name: "Banana ",
+    category: "Fruits",
+    price: 50,
+    offerPrice: 40,
+    image: [banana],
+    description: [
+      "Fresh red apples",
+      "Strong natural flavor",
+      "Essential for daily cooking"
+    ],
+    createdAt: "2025-03-25T07:17:46.018Z",
+    updatedAt: "2025-03-25T07:18:13.103Z",
+    inStock: true,
+  },
+  {
+    _id: "fru004",
+    name: "Oranges ",
+    category: "Fruits",
+    price: 50,
+    offerPrice: 40,
+    image: [orange],
+    description: [
+      "Fresh red apples",
+      "Strong natural flavor",
+      "Essential for daily cooking"
+    ],
+    createdAt: "2025-03-25T07:17:46.018Z",
+    updatedAt: "2025-03-25T07:18:13.103Z",
+    inStock: true,
+  },
+  {
+    _id: "fru005",
+    name: "Grapes 1kg ",
+    category: "Fruits",
+    price: 50,
+    offerPrice: 40,
+    image: [grapes],
+    description: [
+      "Fresh red apples",
+      "Strong natural flavor",
+      "Essential for daily cooking"
+    ],
+    createdAt: "2025-03-25T07:17:46.018Z",
+    updatedAt: "2025-03-25T07:18:13.103Z",
+    inStock: true,
+  },
+  
 ];
 
 
