@@ -38,6 +38,18 @@ import paneer from '../assets/paneer.png';
 import sprite from '../assets/sprite.png';
 import wheet_floor from '../assets/Wheet_floor.png';
 import apples from '../assets/apples.png';
+import sevenup from '../assets/7up.png';
+import cocacola from '../assets/coca_cola.png';
+import string from '../assets/string.png';
+import panner from '../assets/paneer.png';
+import egg from '../assets/eggs.png';
+import milk from '../assets/amul_milk.png';
+import cheese from '../assets/cheeze.png';
+import organic from '../assets/organic_quinoa.png';
+import basmati_rice from '../assets/basmati_rice.png';
+import maggi from '../assets/maggi_image.png';
+import bread from '../assets/brown_bread.png'; 
+
 
 export const assets = {
     logo,
@@ -78,7 +90,17 @@ export const assets = {
     sprite,
     wheet_floor,
     apples,
-
+    sevenup,
+    cocacola,
+    string,
+    panner,
+    egg,
+    milk,
+    cheese,
+    organic,
+    basmati_rice,
+    maggi,
+    bread,
 }
 
 
@@ -285,6 +307,278 @@ export const dummyProducts = [
     price: 50,
     offerPrice: 40,
     image: [grapes],
+    description: [
+      "Fresh red apples",
+      "Strong natural flavor",
+      "Essential for daily cooking"
+    ],
+    createdAt: "2025-03-25T07:17:46.018Z",
+    updatedAt: "2025-03-25T07:18:13.103Z",
+    inStock: true,
+  },
+  {
+    _id: "drk001",
+    name: "7 Up 1.5L ",
+    category: "Drinks",
+    price: 3,
+    offerPrice: 2,
+    image: [sevenup],
+    description: [
+      "Fresh red apples",
+      "Strong natural flavor",
+      "Essential for daily cooking"
+    ],
+    createdAt: "2025-03-25T07:17:46.018Z",
+    updatedAt: "2025-03-25T07:18:13.103Z",
+    inStock: true,
+  },
+  {
+    _id: "drk002",
+    name: "Sprite 1.5L ",
+    category: "Drinks",
+    price: 3,
+    offerPrice: 2,
+    image: [sprite],
+    description: [
+      "Fresh red apples",
+      "Strong natural flavor",
+      "Essential for daily cooking"
+    ],
+    createdAt: "2025-03-25T07:17:46.018Z",
+    updatedAt: "2025-03-25T07:18:13.103Z",
+    inStock: true,
+  },
+   {
+    _id: "drk003",
+    name: "Coca-Cola 1.5L ",
+    category: "Drinks",
+    price: 3,
+    offerPrice: 2,
+    image: [cocacola],
+    description: [
+      "Fresh red apples",
+      "Strong natural flavor",
+      "Essential for daily cooking"
+    ],
+    createdAt: "2025-03-25T07:17:46.018Z",
+    updatedAt: "2025-03-25T07:18:13.103Z",
+    inStock: true,
+  },
+  {
+    _id: "drk004",
+    name: "fanta 1.5L ",
+    category: "Drinks",
+    price: 3,
+    offerPrice: 2,
+    image: [fanta],
+    description: [
+      "Fresh red apples",
+      "Strong natural flavor",
+      "Essential for daily cooking"
+    ],
+    createdAt: "2025-03-25T07:17:46.018Z",
+    updatedAt: "2025-03-25T07:18:13.103Z",
+    inStock: true,
+  },
+   {
+    _id: "drk005",
+    name: "String 1L ",
+    category: "Drinks",
+    price: 5,
+    offerPrice: 3.5,
+    image: [string],
+    description: [
+      "Fresh red apples",
+      "Strong natural flavor",
+      "Essential for daily cooking"
+    ],
+    createdAt: "2025-03-25T07:17:46.018Z",
+    updatedAt: "2025-03-25T07:18:13.103Z",
+    inStock: true,
+  },
+   {
+    _id: "dry001",
+    name: "Paneer 200g ",
+    category: "Dairy",
+    price: 35,
+    offerPrice: 30,
+    image: [panner],
+    description: [
+      "Fresh red apples",
+      "Strong natural flavor",
+      "Essential for daily cooking"
+    ],
+    createdAt: "2025-03-25T07:17:46.018Z",
+    updatedAt: "2025-03-25T07:18:13.103Z",
+    inStock: true,
+  },
+  {
+    _id: "dry002",
+    name: "Eggs 12pcs ",
+    category: "Dairy",
+    price: 35,
+    offerPrice: 30,
+    image: [eggs],
+    description: [
+      "Fresh red apples",
+      "Strong natural flavor",
+      "Essential for daily cooking"
+    ],
+    createdAt: "2025-03-25T07:17:46.018Z",
+    updatedAt: "2025-03-25T07:18:13.103Z",
+    inStock: true,
+  },
+  {
+    _id: "dry003",
+    name: "Amul Milk 1L ",
+    category: "Dairy",
+    price: 35,
+    offerPrice: 30,
+    image: [milk],
+    description: [
+      "Fresh red apples",
+      "Strong natural flavor",
+      "Essential for daily cooking"
+    ],
+    createdAt: "2025-03-25T07:17:46.018Z",
+    updatedAt: "2025-03-25T07:18:13.103Z",
+    inStock: true,
+  },
+  {
+    _id: "dry004",
+    name: "Cheese 200g ",
+    category: "Dairy",
+    price: 35,
+    offerPrice: 30,
+    image: [cheese],
+    description: [
+      "Fresh red apples",
+      "Strong natural flavor",
+      "Essential for daily cooking"
+    ],
+    createdAt: "2025-03-25T07:17:46.018Z",
+    updatedAt: "2025-03-25T07:18:13.103Z",
+    inStock: true,
+  },
+   {
+    _id: "grn001",
+    name: "Organic Quinoa 500g ",
+    category: "Grains",
+    price: 145,
+    offerPrice: 135,
+    image: [organic],
+    description: [
+      "Fresh red apples",
+      "Strong natural flavor",
+      "Essential for daily cooking"
+    ],
+    createdAt: "2025-03-25T07:17:46.018Z",
+    updatedAt: "2025-03-25T07:18:13.103Z",
+    inStock: true,
+  },
+   {
+    _id: "grn002",
+    name: "Wheat Flour 1kg ",
+    category: "Grains",
+    price: 230,
+    offerPrice: 200,
+    image: [wheet_floor],
+    description: [
+      "Fresh red apples",
+      "Strong natural flavor",
+      "Essential for daily cooking"
+    ],
+    createdAt: "2025-03-25T07:17:46.018Z",
+    updatedAt: "2025-03-25T07:18:13.103Z",
+    inStock: true,
+  },
+   {
+    _id: "grn003",
+    name: "Brown Rice 1kg ",
+    category: "Grains",
+    price: 110,
+    offerPrice: 100,
+    image: [brown_rice],
+    description: [
+      "Fresh red apples",
+      "Strong natural flavor",
+      "Essential for daily cooking"
+    ],
+    createdAt: "2025-03-25T07:17:46.018Z",
+    updatedAt: "2025-03-25T07:18:13.103Z",
+    inStock: true,
+  },
+  {
+    _id: "grn004",
+    name: "Bismati Rice 1kg ",
+    category: "Grains",
+    price: 250,
+    offerPrice: 220,
+    image: [basmati_rice],
+    description: [
+      "Fresh red apples",
+      "Strong natural flavor",
+      "Essential for daily cooking"
+    ],
+    createdAt: "2025-03-25T07:17:46.018Z",
+    updatedAt: "2025-03-25T07:18:13.103Z",
+    inStock: true,
+  },
+  {
+    _id: "bky001",
+    name: "Butter Croissant 100g ",
+    category: "Bakery",
+    price: 100,
+    offerPrice: 90,
+    image: [butter_croissant],
+    description: [
+      "Fresh red apples",
+      "Strong natural flavor",
+      "Essential for daily cooking"
+    ],
+    createdAt: "2025-03-25T07:17:46.018Z",
+    updatedAt: "2025-03-25T07:18:13.103Z",
+    inStock: true,
+  },
+   {
+    _id: "bky002",
+    name: "Brown Bread ",
+    category: "Bakery",
+    price: 100,
+    offerPrice: 90,
+    image: [bread],
+    description: [
+      "Fresh red apples",
+      "Strong natural flavor",
+      "Essential for daily cooking"
+    ],
+    createdAt: "2025-03-25T07:17:46.018Z",
+    updatedAt: "2025-03-25T07:18:13.103Z",
+    inStock: true,
+  },
+   {
+    _id: "ist001",
+    name: "Knoor Cup Soup 50g ",
+    category: "Instant",
+    price: 100,
+    offerPrice: 90,
+    image: [knoor_cup_soup],
+    description: [
+      "Fresh red apples",
+      "Strong natural flavor",
+      "Essential for daily cooking"
+    ],
+    createdAt: "2025-03-25T07:17:46.018Z",
+    updatedAt: "2025-03-25T07:18:13.103Z",
+    inStock: true,
+  },
+   {
+    _id: "ist001",
+    name: "Maggi Noodles 70g ",
+    category: "Instant",
+    price: 30,
+    offerPrice: 25,
+    image: [maggi],
     description: [
       "Fresh red apples",
       "Strong natural flavor",
