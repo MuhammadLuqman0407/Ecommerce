@@ -24,7 +24,8 @@ const AllProducts = () => {
     }, [products, searchQuery, category])
 
   return (
-    <div className='mt-16 flex flex-col m-16'>
+    <div
+        className='mt-16 flex flex-col m-16'>
       <div className='flex flex-col items-end w-max'>
         <p className='text-2xl font-medium uppercase'>
             {category ? `${category}` : 'All Products'}
