@@ -50,6 +50,14 @@ import basmati_rice from '../assets/basmati_rice.png';
 import maggi from '../assets/maggi_image.png';
 import bread from '../assets/brown_bread.png'; 
 
+import vegetablesData from './data/vegetables.json';
+import fruitsData from './data/fruits.json';
+import drinksData from './data/drinks.json';
+import dairyData from './data/dairy.json';
+import grainsData from './data/grains.json';
+import bakeryData from './data/bakery.json';
+import instantData from './data/instant.json';
+
 
 export const assets = {
     logo,
@@ -131,7 +139,7 @@ export const categories = [
     },
     {
         text: "Bakkery & Breads",
-        path: "Bakkery",
+        path: "Bakery",
         image: bakery_image,
         bgColor: "#f0dbce",
     },
@@ -143,452 +151,35 @@ export const categories = [
     },
     {
         text: "Grain & Cereals",
-        path: "Grain",
+        path: "Grains",
         image: grain_image,
         bgColor: "#f7bcf3",
     }
 ]
 
+const mapImages = (productsList) => {
+    return productsList.map(product => ({
+        ...product,
+        image: product.image.map(imgName => assets[imgName] || imgName)
+    }));
+};
+
+export const vegetablesProducts = mapImages(vegetablesData);
+export const fruitsProducts = mapImages(fruitsData);
+export const drinksProducts = mapImages(drinksData);
+export const dairyProducts = mapImages(dairyData);
+export const grainsProducts = mapImages(grainsData);
+export const bakeryProducts = mapImages(bakeryData);
+export const instantProducts = mapImages(instantData);
+
 export const dummyProducts = [
-  // Vegetables
-
-  {
-    _id: "veg001",
-    name: "Potato 500g",
-    category: "Vegetables",
-    price: 40,
-    offerPrice: 35,
-    image: [potato_image],
-    description: [
-      "Fresh and organic",
-      "Rich in carbohydrates",
-      "Ideal for curries and fries"
-    ],
-    createdAt: "2025-03-25T07:17:46.018Z",
-    updatedAt: "2025-03-25T07:18:13.103Z",
-    inStock: true,
-  },
-
-  {
-    _id: "veg002",
-    name: "Tomato 1kg",
-    category: "Vegetables",
-    price: 30,
-    offerPrice: 28,
-    image: [tomato_image],
-    description: [
-      "Farm fresh tomatoes",
-      "Rich in Vitamin C",
-      "Perfect for salads and cooking"
-    ],
-    createdAt: "2025-03-25T07:17:46.018Z",
-    updatedAt: "2025-03-25T07:18:13.103Z",
-    inStock: true,
-  },
-
-  {
-    _id: "veg003",
-    name: "Carrot 500g",
-    category: "Vegetables",
-    price: 50,
-    offerPrice: 44,
-    image: [carrot_image],
-    description: [
-      "Fresh organic carrots",
-      "High in Vitamin A",
-      "Sweet and crunchy"
-    ],
-    createdAt: "2025-03-25T07:17:46.018Z",
-    updatedAt: "2025-03-25T07:18:13.103Z",
-    inStock: true,
-  },
-
-  {
-    _id: "veg004",
-    name: "Spinach 500g",
-    category: "Vegetables",
-    price: 25,
-    offerPrice: 20,
-    image: [spanish_image],
-    description: [
-      "Fresh green leaves",
-      "Rich in iron and calcium",
-      "Ideal for healthy meals"
-    ],
-    createdAt: "2025-03-25T07:17:46.018Z",
-    updatedAt: "2025-03-25T07:18:13.103Z",
-    inStock: true,
-  },
-
-  {
-    _id: "veg005",
-    name: "Onion 500g",
-    category: "Vegetables",
-    price: 35,
-    offerPrice: 30,
-    image: [onion_image],
-    description: [
-      "Fresh red onions",
-      "Strong natural flavor",
-      "Essential for daily cooking"
-    ],
-    createdAt: "2025-03-25T07:17:46.018Z",
-    updatedAt: "2025-03-25T07:18:13.103Z",
-    inStock: true,
-  },
-  {
-    _id: "fru001",
-    name: "Apple 1kg",
-    category: "Fruits",
-    price: 50,
-    offerPrice: 40,
-    image: [apples],
-    description: [
-      "Fresh red apples",
-      "Strong natural flavor",
-      "Essential for daily cooking"
-    ],
-    createdAt: "2025-03-25T07:17:46.018Z",
-    updatedAt: "2025-03-25T07:18:13.103Z",
-    inStock: true,
-  },
-   {
-    _id: "fru002",
-    name: "Mangoes 1kg",
-    category: "Fruits",
-    price: 50,
-    offerPrice: 40,
-    image: [mango],
-    description: [
-      "Fresh red apples",
-      "Strong natural flavor",
-      "Essential for daily cooking"
-    ],
-    createdAt: "2025-03-25T07:17:46.018Z",
-    updatedAt: "2025-03-25T07:18:13.103Z",
-    inStock: true,
-  },
-  {
-    _id: "fru003",
-    name: "Banana ",
-    category: "Fruits",
-    price: 50,
-    offerPrice: 40,
-    image: [banana],
-    description: [
-      "Fresh red apples",
-      "Strong natural flavor",
-      "Essential for daily cooking"
-    ],
-    createdAt: "2025-03-25T07:17:46.018Z",
-    updatedAt: "2025-03-25T07:18:13.103Z",
-    inStock: true,
-  },
-  {
-    _id: "fru004",
-    name: "Oranges ",
-    category: "Fruits",
-    price: 50,
-    offerPrice: 40,
-    image: [orange],
-    description: [
-      "Fresh red apples",
-      "Strong natural flavor",
-      "Essential for daily cooking"
-    ],
-    createdAt: "2025-03-25T07:17:46.018Z",
-    updatedAt: "2025-03-25T07:18:13.103Z",
-    inStock: true,
-  },
-  {
-    _id: "fru005",
-    name: "Grapes 1kg ",
-    category: "Fruits",
-    price: 50,
-    offerPrice: 40,
-    image: [grapes],
-    description: [
-      "Fresh red apples",
-      "Strong natural flavor",
-      "Essential for daily cooking"
-    ],
-    createdAt: "2025-03-25T07:17:46.018Z",
-    updatedAt: "2025-03-25T07:18:13.103Z",
-    inStock: true,
-  },
-  {
-    _id: "drk001",
-    name: "7 Up 1.5L ",
-    category: "Drinks",
-    price: 3,
-    offerPrice: 2,
-    image: [sevenup],
-    description: [
-      "Fresh red apples",
-      "Strong natural flavor",
-      "Essential for daily cooking"
-    ],
-    createdAt: "2025-03-25T07:17:46.018Z",
-    updatedAt: "2025-03-25T07:18:13.103Z",
-    inStock: true,
-  },
-  {
-    _id: "drk002",
-    name: "Sprite 1.5L ",
-    category: "Drinks",
-    price: 3,
-    offerPrice: 2,
-    image: [sprite],
-    description: [
-      "Fresh red apples",
-      "Strong natural flavor",
-      "Essential for daily cooking"
-    ],
-    createdAt: "2025-03-25T07:17:46.018Z",
-    updatedAt: "2025-03-25T07:18:13.103Z",
-    inStock: true,
-  },
-   {
-    _id: "drk003",
-    name: "Coca-Cola 1.5L ",
-    category: "Drinks",
-    price: 3,
-    offerPrice: 2,
-    image: [cocacola],
-    description: [
-      "Fresh red apples",
-      "Strong natural flavor",
-      "Essential for daily cooking"
-    ],
-    createdAt: "2025-03-25T07:17:46.018Z",
-    updatedAt: "2025-03-25T07:18:13.103Z",
-    inStock: true,
-  },
-  {
-    _id: "drk004",
-    name: "fanta 1.5L ",
-    category: "Drinks",
-    price: 3,
-    offerPrice: 2,
-    image: [fanta],
-    description: [
-      "Fresh red apples",
-      "Strong natural flavor",
-      "Essential for daily cooking"
-    ],
-    createdAt: "2025-03-25T07:17:46.018Z",
-    updatedAt: "2025-03-25T07:18:13.103Z",
-    inStock: true,
-  },
-   {
-    _id: "drk005",
-    name: "String 1L ",
-    category: "Drinks",
-    price: 5,
-    offerPrice: 3.5,
-    image: [string],
-    description: [
-      "Fresh red apples",
-      "Strong natural flavor",
-      "Essential for daily cooking"
-    ],
-    createdAt: "2025-03-25T07:17:46.018Z",
-    updatedAt: "2025-03-25T07:18:13.103Z",
-    inStock: true,
-  },
-   {
-    _id: "dry001",
-    name: "Paneer 200g ",
-    category: "Dairy",
-    price: 35,
-    offerPrice: 30,
-    image: [panner],
-    description: [
-      "Fresh red apples",
-      "Strong natural flavor",
-      "Essential for daily cooking"
-    ],
-    createdAt: "2025-03-25T07:17:46.018Z",
-    updatedAt: "2025-03-25T07:18:13.103Z",
-    inStock: true,
-  },
-  {
-    _id: "dry002",
-    name: "Eggs 12pcs ",
-    category: "Dairy",
-    price: 35,
-    offerPrice: 30,
-    image: [eggs],
-    description: [
-      "Fresh red apples",
-      "Strong natural flavor",
-      "Essential for daily cooking"
-    ],
-    createdAt: "2025-03-25T07:17:46.018Z",
-    updatedAt: "2025-03-25T07:18:13.103Z",
-    inStock: true,
-  },
-  {
-    _id: "dry003",
-    name: "Amul Milk 1L ",
-    category: "Dairy",
-    price: 35,
-    offerPrice: 30,
-    image: [milk],
-    description: [
-      "Fresh red apples",
-      "Strong natural flavor",
-      "Essential for daily cooking"
-    ],
-    createdAt: "2025-03-25T07:17:46.018Z",
-    updatedAt: "2025-03-25T07:18:13.103Z",
-    inStock: true,
-  },
-  {
-    _id: "dry004",
-    name: "Cheese 200g ",
-    category: "Dairy",
-    price: 35,
-    offerPrice: 30,
-    image: [cheese],
-    description: [
-      "Fresh red apples",
-      "Strong natural flavor",
-      "Essential for daily cooking"
-    ],
-    createdAt: "2025-03-25T07:17:46.018Z",
-    updatedAt: "2025-03-25T07:18:13.103Z",
-    inStock: true,
-  },
-   {
-    _id: "grn001",
-    name: "Organic Quinoa 500g ",
-    category: "Grains",
-    price: 145,
-    offerPrice: 135,
-    image: [organic],
-    description: [
-      "Fresh red apples",
-      "Strong natural flavor",
-      "Essential for daily cooking"
-    ],
-    createdAt: "2025-03-25T07:17:46.018Z",
-    updatedAt: "2025-03-25T07:18:13.103Z",
-    inStock: true,
-  },
-   {
-    _id: "grn002",
-    name: "Wheat Flour 1kg ",
-    category: "Grains",
-    price: 230,
-    offerPrice: 200,
-    image: [wheet_floor],
-    description: [
-      "Fresh red apples",
-      "Strong natural flavor",
-      "Essential for daily cooking"
-    ],
-    createdAt: "2025-03-25T07:17:46.018Z",
-    updatedAt: "2025-03-25T07:18:13.103Z",
-    inStock: true,
-  },
-   {
-    _id: "grn003",
-    name: "Brown Rice 1kg ",
-    category: "Grains",
-    price: 110,
-    offerPrice: 100,
-    image: [brown_rice],
-    description: [
-      "Fresh red apples",
-      "Strong natural flavor",
-      "Essential for daily cooking"
-    ],
-    createdAt: "2025-03-25T07:17:46.018Z",
-    updatedAt: "2025-03-25T07:18:13.103Z",
-    inStock: true,
-  },
-  {
-    _id: "grn004",
-    name: "Bismati Rice 1kg ",
-    category: "Grains",
-    price: 250,
-    offerPrice: 220,
-    image: [basmati_rice],
-    description: [
-      "Fresh red apples",
-      "Strong natural flavor",
-      "Essential for daily cooking"
-    ],
-    createdAt: "2025-03-25T07:17:46.018Z",
-    updatedAt: "2025-03-25T07:18:13.103Z",
-    inStock: true,
-  },
-  {
-    _id: "bky001",
-    name: "Butter Croissant 100g ",
-    category: "Bakery",
-    price: 100,
-    offerPrice: 90,
-    image: [butter_croissant],
-    description: [
-      "Fresh red apples",
-      "Strong natural flavor",
-      "Essential for daily cooking"
-    ],
-    createdAt: "2025-03-25T07:17:46.018Z",
-    updatedAt: "2025-03-25T07:18:13.103Z",
-    inStock: true,
-  },
-   {
-    _id: "bky002",
-    name: "Brown Bread ",
-    category: "Bakery",
-    price: 100,
-    offerPrice: 90,
-    image: [bread],
-    description: [
-      "Fresh red apples",
-      "Strong natural flavor",
-      "Essential for daily cooking"
-    ],
-    createdAt: "2025-03-25T07:17:46.018Z",
-    updatedAt: "2025-03-25T07:18:13.103Z",
-    inStock: true,
-  },
-   {
-    _id: "ist001",
-    name: "Knoor Cup Soup 50g ",
-    category: "Instant",
-    price: 100,
-    offerPrice: 90,
-    image: [knoor_cup_soup],
-    description: [
-      "Fresh red apples",
-      "Strong natural flavor",
-      "Essential for daily cooking"
-    ],
-    createdAt: "2025-03-25T07:17:46.018Z",
-    updatedAt: "2025-03-25T07:18:13.103Z",
-    inStock: true,
-  },
-   {
-    _id: "ist001",
-    name: "Maggi Noodles 70g ",
-    category: "Instant",
-    price: 30,
-    offerPrice: 25,
-    image: [maggi],
-    description: [
-      "Fresh red apples",
-      "Strong natural flavor",
-      "Essential for daily cooking"
-    ],
-    createdAt: "2025-03-25T07:17:46.018Z",
-    updatedAt: "2025-03-25T07:18:13.103Z",
-    inStock: true,
-  },
-  
+    ...vegetablesProducts,
+    ...fruitsProducts,
+    ...drinksProducts,
+    ...dairyProducts,
+    ...grainsProducts,
+    ...bakeryProducts,
+    ...instantProducts
 ];
 
 

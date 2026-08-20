@@ -1,0 +1,34 @@
+[
+  {
+    "_id": "bky001",
+    "name": "Butter Croissant 100g",
+    "category": "Bakery",
+    "price": 100,
+    "offerPrice": 90,
+    "image": ["butter_croissant"],
+    "description": [
+      "Flaky and buttery freshly baked croissant",
+      "Golden-brown crisp crust with soft light layers",
+      "Perfect breakfast pastry or evening snack with coffee"
+    ],
+    "createdAt": "2025-03-25T07:17:46.018Z",
+    "updatedAt": "2025-03-25T07:18:13.103Z",
+    "inStock": true
+  },
+  {
+    "_id": "bky002",
+    "name": "Brown Bread",
+    "category": "Bakery",
+    "price": 100,
+    "offerPrice": 90,
+    "image": ["bread"],
+    "description": [
+      "Freshly baked whole wheat brown bread",
+      "High in dietary fiber, low in fat",
+      "Soft texture, perfect for healthy sandwiches and toast"
+    ],
+    "createdAt": "2025-03-25T07:17:46.018Z",
+    "updatedAt": "2025-03-25T07:18:13.103Z",
+    "inStock": true
+  }
+]

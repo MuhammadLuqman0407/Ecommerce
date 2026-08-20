@@ -1,0 +1,34 @@
+[
+  {
+    "_id": "ist001",
+    "name": "Knoor Cup Soup 50g",
+    "category": "Instant",
+    "price": 100,
+    "offerPrice": 90,
+    "image": ["knoor_cup_soup"],
+    "description": [
+      "Fresh red apples",
+      "Strong natural flavor",
+      "Essential for daily cooking"
+    ],
+    "createdAt": "2025-03-25T07:17:46.018Z",
+    "updatedAt": "2025-03-25T07:18:13.103Z",
+    "inStock": true
+  },
+  {
+    "_id": "ist002",
+    "name": "Maggi Noodles 70g",
+    "category": "Instant",
+    "price": 30,
+    "offerPrice": 25,
+    "image": ["maggi"],
+    "description": [
+      "Fresh red apples",
+      "Strong natural flavor",
+      "Essential for daily cooking"
+    ],
+    "createdAt": "2025-03-25T07:17:46.018Z",
+    "updatedAt": "2025-03-25T07:18:13.103Z",
+    "inStock": true
+  }
+]

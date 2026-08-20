@@ -24,6 +24,7 @@ function App() {
         <Routes>
           <Route path="/" element={  <Home />}   />
           <Route path="/products" element={<AllProducts />} />
+          <Route path="/products/:category" element={<AllProducts />} />
         </Routes>
       </div>
       {!isSellerPath && <Footer />}
