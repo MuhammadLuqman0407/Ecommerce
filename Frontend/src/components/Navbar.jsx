@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { assets } from '../assets/assets.js';
 import { useAppContext } from '../context/AppContext.jsx';
@@ -9,7 +9,7 @@ const Navbar = () => {
     const [showCartMenu, setShowCartMenu] = React.useState(false);
     const profileMenuRef = React.useRef(null);
     const cartMenuRef = React.useRef(null);
-    const { user, setUser, setShowUserLogin, navigate, cartItems, products, currency } = useAppContext();
+    const { user, setUser, setShowUserLogin, navigate, cartItems, products, currency, setSearchQuery, searchQuery  } = useAppContext();
 
     const cartCount = Object.values(cartItems).reduce((sum, qty) => sum + qty, 0);
 
@@ -38,6 +38,7 @@ const Navbar = () => {
         setOpen(false);
         setShowProfileMenu(false);
         setShowCartMenu(false);
+        setSearchQuery('');
     };
 
     const handleLogin = () => {
@@ -60,6 +61,12 @@ const Navbar = () => {
         setOpen(false);
         navigate('/my-orders');
     };
+
+    useEffect(() => {
+        if(searchQuery.length > 0){
+            navigate('/products');
+        }
+    },[searchQuery]);
 
     React.useEffect(() => {
         const handleClickOutside = (event) => {
@@ -109,6 +116,8 @@ const Navbar = () => {
 
                 <div className="w-full flex items-center text-sm gap-2 border border-gray-300 px-3 rounded-full my-2">
                     <input
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
                         className="py-1.5 w-full bg-transparent outline-none placeholder-gray-500"
                         type="text"
                         placeholder="Search products"
@@ -211,9 +220,9 @@ const Navbar = () => {
             </div>
 
             <div className="hidden lg:flex items-center justify-center gap-8 flex-1">
-                <NavLink to="/" className="hover:text-primary">Home</NavLink>
-                <NavLink to="/products" className="hover:text-primary">All Products</NavLink>
-                <NavLink to="/contact" className="hover:text-primary">Contact</NavLink>
+                <NavLink to="/" onClick={() => setSearchQuery('')} className="hover:text-primary">Home</NavLink>
+                <NavLink to="/products" onClick={() => setSearchQuery('')} className="hover:text-primary">All Products</NavLink>
+                <NavLink to="/contact" onClick={() => setSearchQuery('')} className="hover:text-primary">Contact</NavLink>
 
                 {user && (
                     <NavLink to="/my-orders" className="hover:text-primary">My Orders</NavLink>
@@ -223,6 +232,8 @@ const Navbar = () => {
             <div className="hidden lg:flex items-center gap-6">
                 <div className="flex items-center text-sm gap-2 border border-gray-300 px-3 rounded-full">
                     <input
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
                         className="py-1.5 w-32 bg-transparent outline-none placeholder-gray-500"
                         type="text"
                         placeholder="Search products"

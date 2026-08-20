@@ -1,0 +1,66 @@
+[
+  {
+    "_id": "grn001",
+    "name": "Organic Quinoa 500g",
+    "category": "Grains",
+    "price": 145,
+    "offerPrice": 135,
+    "image": ["organic"],
+    "description": [
+      "Gluten-free organic white quinoa",
+      "Complete plant-based protein with essential amino acids",
+      "Nutritious grain alternative to rice and pasta"
+    ],
+    "createdAt": "2025-03-25T07:17:46.018Z",
+    "updatedAt": "2025-03-25T07:18:13.103Z",
+    "inStock": true
+  },
+  {
+    "_id": "grn002",
+    "name": "Wheat Flour 1kg",
+    "category": "Grains",
+    "price": 230,
+    "offerPrice": 200,
+    "image": ["wheet_floor"],
+    "description": [
+      "100% whole wheat stoneground flour",
+      "Rich in dietary fiber, vitamins, and minerals",
+      "Perfect for making soft rotis, chapatis, and flatbreads"
+    ],
+    "createdAt": "2025-03-25T07:17:46.018Z",
+    "updatedAt": "2025-03-25T07:18:13.103Z",
+    "inStock": true
+  },
+  {
+    "_id": "grn003",
+    "name": "Brown Rice 1kg",
+    "category": "Grains",
+    "price": 110,
+    "offerPrice": 100,
+    "image": ["brown_rice"],
+    "description": [
+      "Nutritious unpolished whole grain brown rice",
+      "High in natural fiber and essential minerals",
+      "Ideal for health-conscious meals and diets"
+    ],
+    "createdAt": "2025-03-25T07:17:46.018Z",
+    "updatedAt": "2025-03-25T07:18:13.103Z",
+    "inStock": true
+  },
+  {
+    "_id": "grn004",
+    "name": "Bismati Rice 1kg",
+    "category": "Grains",
+    "price": 250,
+    "offerPrice": 220,
+    "image": ["basmati_rice"],
+    "description": [
+      "Premium aged long-grain Basmati rice",
+      "Highly aromatic, non-sticky and fluffy when cooked",
+      "Perfect choice for biryanis, pulaos and special occasions"
+    ],
+    "createdAt": "2025-03-25T07:17:46.018Z",
+    "updatedAt": "2025-03-25T07:18:13.103Z",
+    "inStock": true
+  }
+]

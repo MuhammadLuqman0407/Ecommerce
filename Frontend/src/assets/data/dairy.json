@@ -1,0 +1,66 @@
+[
+  {
+    "_id": "dry001",
+    "name": "Paneer 200g",
+    "category": "Dairy",
+    "price": 35,
+    "offerPrice": 30,
+    "image": ["panner"],
+    "description": [
+      "Fresh and soft cottage cheese",
+      "Rich in high-quality protein and calcium",
+      "Ideal for Indian curries, stir-fries and grilling"
+    ],
+    "createdAt": "2025-03-25T07:17:46.018Z",
+    "updatedAt": "2025-03-25T07:18:13.103Z",
+    "inStock": true
+  },
+  {
+    "_id": "dry002",
+    "name": "Eggs 12pcs",
+    "category": "Dairy",
+    "price": 35,
+    "offerPrice": 30,
+    "image": ["eggs"],
+    "description": [
+      "Farm fresh high-quality white eggs",
+      "Excellent source of daily protein and nutrients",
+      "Versatile kitchen essential for baking and cooking"
+    ],
+    "createdAt": "2025-03-25T07:17:46.018Z",
+    "updatedAt": "2025-03-25T07:18:13.103Z",
+    "inStock": true
+  },
+  {
+    "_id": "dry003",
+    "name": "Amul Milk 1L",
+    "category": "Dairy",
+    "price": 35,
+    "offerPrice": 30,
+    "image": ["milk"],
+    "description": [
+      "Pasteurized fresh cow milk",
+      "Homogenized and rich in essential calcium and Vitamin D",
+      "Perfect for drinking, tea, coffee, and breakfast cereals"
+    ],
+    "createdAt": "2025-03-25T07:17:46.018Z",
+    "updatedAt": "2025-03-25T07:18:13.103Z",
+    "inStock": true
+  },
+  {
+    "_id": "dry004",
+    "name": "Cheese 200g",
+    "category": "Dairy",
+    "price": 35,
+    "offerPrice": 30,
+    "image": ["cheese"],
+    "description": [
+      "Rich and creamy cheese block",
+      "Perfect for sandwiches, pizzas, and melting",
+      "Great source of calcium and proteins"
+    ],
+    "createdAt": "2025-03-25T07:17:46.018Z",
+    "updatedAt": "2025-03-25T07:18:13.103Z",
+    "inStock": true
+  }
+]

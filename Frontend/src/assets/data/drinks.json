@@ -1,0 +1,82 @@
+[
+  {
+    "_id": "drk001",
+    "name": "7 Up 1.5L",
+    "category": "Drinks",
+    "price": 3,
+    "offerPrice": 2,
+    "image": ["sevenup"],
+    "description": [
+      "Refreshing lemon-lime soda",
+      "Crisp and clean citrus taste",
+      "Perfect refreshment for meals and gatherings"
+    ],
+    "createdAt": "2025-03-25T07:17:46.018Z",
+    "updatedAt": "2025-03-25T07:18:13.103Z",
+    "inStock": true
+  },
+  {
+    "_id": "drk002",
+    "name": "Sprite 1.5L",
+    "category": "Drinks",
+    "price": 3,
+    "offerPrice": 2,
+    "image": ["sprite"],
+    "description": [
+      "Clear lemon-lime carbonated beverage",
+      "100% natural citrus flavors",
+      "Thirst-quenching, bubbly and caffeine-free"
+    ],
+    "createdAt": "2025-03-25T07:17:46.018Z",
+    "updatedAt": "2025-03-25T07:18:13.103Z",
+    "inStock": true
+  },
+  {
+    "_id": "drk003",
+    "name": "Coca-Cola 1.5L",
+    "category": "Drinks",
+    "price": 3,
+    "offerPrice": 2,
+    "image": ["cocacola"],
+    "description": [
+      "Classic Coca-Cola taste",
+      "Refreshing carbonated soft drink",
+      "Best served chilled for maximum refreshment"
+    ],
+    "createdAt": "2025-03-25T07:17:46.018Z",
+    "updatedAt": "2025-03-25T07:18:13.103Z",
+    "inStock": true
+  },
+  {
+    "_id": "drk004",
+    "name": "fanta 1.5L",
+    "category": "Drinks",
+    "price": 3,
+    "offerPrice": 2,
+    "image": ["fanta"],
+    "description": [
+      "Bubbly and refreshing orange soda",
+      "Vibrant fruit citrus taste",
+      "Fun and fruity drink for any occasion"
+    ],
+    "createdAt": "2025-03-25T07:17:46.018Z",
+    "updatedAt": "2025-03-25T07:18:13.103Z",
+    "inStock": true
+  },
+  {
+    "_id": "drk005",
+    "name": "String 1L",
+    "category": "Drinks",
+    "price": 5,
+    "offerPrice": 3.5,
+    "image": ["string"],
+    "description": [
+      "Energizing energy drink",
+      "Restores stamina and vitality",
+      "Great boost for study, work or sports"
+    ],
+    "createdAt": "2025-03-25T07:17:46.018Z",
+    "updatedAt": "2025-03-25T07:18:13.103Z",
+    "inStock": true
+  }
+]
