@@ -45,10 +45,10 @@ const ProductCard = ({ product }) => {
                 <div className="mt-4 flex items-end justify-between gap-3">
                     <div>
                         <p className="text-indigo-600 font-semibold text-lg md:text-xl">
-                            {currency}${product.offerPrice}
+                            {currency}{product.offerPrice}
                         </p>
                         <p className="text-xs md:text-sm text-gray-400 line-through">
-                            {currency}${product.price}
+                            {currency}{product.price}
                         </p>
                     </div>
                         
