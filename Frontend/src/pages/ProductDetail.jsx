@@ -113,10 +113,10 @@ const ProductDetail = () => {
                     {/* Price */}
                     <div className="mt-5">
                         <p className="text-sm text-gray-400 line-through">
-                            MRP: {currency}${product.price}
+                            MRP: {currency}{product.price}
                         </p>
                         <p className="text-2xl sm:text-3xl font-bold text-gray-900 mt-1">
-                            MRP: {currency}${product.offerPrice}
+                            MRP: {currency}{product.offerPrice}
                         </p>
                         <p className="text-xs text-gray-400 mt-1">(inclusive of all taxes)</p>
                     </div>

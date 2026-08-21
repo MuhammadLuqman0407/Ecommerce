@@ -10,7 +10,7 @@ export const AppContext = createContext();
 
 export const AppContextProvider = ({children}) => {
 
-    const currency = import.meta.VITE_CURRENCY;
+    const currency = import.meta.env?.VITE_CURRENCY || '$';
     const navigate = useNavigate();
     const [user, setUser] = useState(true);
     const [isSeller, setIsSeller] = useState(false);
@@ -40,7 +40,11 @@ export const AppContextProvider = ({children}) => {
 
     const updateCartItem = (itemId, quantity) => {
         let cartData = structuredClone(cartItems);
-        cartData[itemId] = quantity;
+        if (quantity <= 0) {
+            delete cartData[itemId];
+        } else {
+            cartData[itemId] = quantity;
+        }
         setCartItems(cartData);
         toast.success("Cart Updated");
     }
@@ -56,6 +60,26 @@ export const AppContextProvider = ({children}) => {
         toast.success("Removed from Cart")
         setCartItems(cartData)
     }
+    // get cart items count
+    const getCartCount = () => {
+        let totalCount = 0;
+        for (const item in cartItems){
+            totalCount += cartItems[item];
+        }
+        return totalCount;
+    }
+
+    // get cart total amount
+    const getCartAmount = () => {
+        let totalAmount = 0;
+        for(const items in cartItems){
+            let itemInfo = products.find((product) => product._id === items);
+            if(cartItems[items] > 0){
+                totalAmount += itemInfo.offerPrice * cartItems[items];
+            }
+        }
+        return Math.floor(totalAmount * 100) / 100;
+    }
 
     useEffect (() => {
         fetchProducts()
@@ -64,7 +88,7 @@ export const AppContextProvider = ({children}) => {
     const value = {navigate, user, setUser, setIsSeller, isSeller,
         showUserLogin, setShowUserLogin, products, currency, 
         addToCart, updateCartItem, removeFromCart, cartItems,
-        searchQuery, setSearchQuery
+        searchQuery, setSearchQuery, getCartAmount, getCartCount
     };
 
     return (
