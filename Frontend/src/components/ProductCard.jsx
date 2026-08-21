@@ -52,11 +52,20 @@ const ProductCard = ({ product }) => {
                         </p>
                     </div>
                         
-                    {!productQty ? (
+                    {product.inStock === false ? (
+                        <button
+                            type="button"
+                            disabled
+                            onClick={(e) => e.stopPropagation()}
+                            className="bg-gray-100 border border-gray-200 text-gray-400 rounded-2xl px-3 py-2 text-xs font-semibold cursor-not-allowed"
+                        >
+                            Out of Stock
+                        </button>
+                    ) : !productQty ? (
                         <button
                             type="button"
                             onClick={(e) => { e.stopPropagation(); addToCart(product._id); }}
-                            className="flex items-center justify-center gap-2 bg-indigo-100 border border-indigo-200 text-indigo-700 rounded-2xl px-3 py-2 text-sm transition hover:bg-indigo-200"
+                            className="flex items-center justify-center gap-2 bg-indigo-100 border border-indigo-200 text-indigo-700 rounded-2xl px-3 py-2 text-sm transition hover:bg-indigo-200 cursor-pointer"
                         >
                             <img src={assets.cart} alt="cart_icon" className="w-4 h-4 md:w-5 md:h-5 object-contain" />
                             Add
@@ -66,7 +75,7 @@ const ProductCard = ({ product }) => {
                             <button
                                 type="button"
                                 onClick={(e) => { e.stopPropagation(); removeFromCart(product._id); }}
-                                className="w-8 h-8 flex items-center justify-center rounded-xl bg-white text-indigo-600 transition hover:bg-indigo-100"
+                                className="w-8 h-8 flex items-center justify-center rounded-xl bg-white text-indigo-600 transition hover:bg-indigo-100 cursor-pointer"
                             >
                                 -
                             </button>
@@ -74,7 +83,7 @@ const ProductCard = ({ product }) => {
                             <button
                                 type="button"
                                 onClick={(e) => { e.stopPropagation(); addToCart(product._id); }}
-                                className="w-8 h-8 flex items-center justify-center rounded-xl bg-white text-indigo-600 transition hover:bg-indigo-100"
+                                className="w-8 h-8 flex items-center justify-center rounded-xl bg-white text-indigo-600 transition hover:bg-indigo-100 cursor-pointer"
                             >
                                 +
                             </button>

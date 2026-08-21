@@ -185,6 +185,9 @@ const Navbar = () => {
             </div>
 
             <div className="hidden lg:flex items-center justify-center gap-8 flex-1">
+                <NavLink to="/seller" className="border border-gray-300 rounded-full px-4 py-1 text-xs hover:bg-gray-50 text-gray-600 transition">
+                    Seller Dashboard
+                </NavLink>
                 <NavLink to="/" onClick={() => setSearchQuery('')} className="hover:text-primary">Home</NavLink>
                 <NavLink to="/products" onClick={() => setSearchQuery('')} className="hover:text-primary">All Products</NavLink>
                 <NavLink to="/contact" onClick={() => setSearchQuery('')} className="hover:text-primary">Contact</NavLink>
