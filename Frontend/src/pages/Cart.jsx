@@ -13,12 +13,18 @@ const Cart = () => {
         getCartAmount,
         getCartCount,
         navigate,
-        user
+        user,
+        userAddress,
+        placeOrder
     } = useAppContext();
 
     const [paymentMethod, setPaymentMethod] = useState('Cash On Delivery');
-    const [address, setAddress] = useState('');
-    const [isEditingAddress, setIsEditingAddress] = useState(false);
+
+    const formattedAddress = userAddress
+        ? typeof userAddress === 'string'
+            ? userAddress
+            : `${userAddress.street}, ${userAddress.city}, ${userAddress.state} ${userAddress.zipCode}, ${userAddress.country}`
+        : null;
 
     // Build array of products in cart with details & quantity
     const cartData = Object.entries(cartItems)
@@ -38,10 +44,11 @@ const Cart = () => {
             toast.error("Your cart is empty!");
             return;
         }
-        toast.success("Order Placed Successfully!");
-        // Clear cart items
-        cartData.forEach(item => updateCartItem(item._id, 0));
-        navigate('/my-orders');
+        const success = placeOrder(paymentMethod);
+        if (success) {
+            toast.success("Order Placed Successfully!");
+            navigate('/my-orders');
+        }
     };
 
     if (cartData.length === 0) {
@@ -170,35 +177,16 @@ const Cart = () => {
                             <span className="text-xs font-bold text-gray-500 uppercase tracking-wider">Delivery Address</span>
                             <button
                                 type="button"
-                                onClick={() => setIsEditingAddress(!isEditingAddress)}
-                                className="text-xs font-semibold text-primary hover:underline"
+                                onClick={() => navigate('/add-address')}
+                                className="text-xs font-semibold text-primary hover:underline cursor-pointer"
                             >
-                                {address ? 'Change' : isEditingAddress ? 'Cancel' : 'Change'}
+                                Change
                             </button>
                         </div>
 
-                        {isEditingAddress ? (
-                            <div className="space-y-2 pt-1">
-                                <textarea
-                                    value={address}
-                                    onChange={(e) => setAddress(e.target.value)}
-                                    placeholder="Enter full delivery address"
-                                    className="w-full text-xs sm:text-sm border border-gray-300 rounded-lg p-2 bg-white outline-none focus:border-primary"
-                                    rows={2}
-                                />
-                                <button
-                                    type="button"
-                                    onClick={() => setIsEditingAddress(false)}
-                                    className="px-3 py-1 bg-primary text-white text-xs rounded-md font-medium"
-                                >
-                                    Save Address
-                                </button>
-                            </div>
-                        ) : (
-                            <p className="text-sm text-gray-600">
-                                {address || 'No address found'}
-                            </p>
-                        )}
+                        <p className="text-sm text-gray-600">
+                            {formattedAddress || 'No address found'}
+                        </p>
                     </div>
 
                     {/* Payment Method */}
