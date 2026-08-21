@@ -16,9 +16,16 @@ import Cart from "./pages/Cart";
 import AddAdress from "./pages/AddAdress";
 import MyOrders from "./pages/MyOrders";
 
+import SellerLogin from "./components/seller/SellerLogin";
+import SellerSignUp from "./components/seller/SellerSignUp";
+import SellerLayout from "./components/seller/SellerLayout";
+import AddProduct from "./components/seller/AddProduct";
+import ProductList from "./components/seller/ProductList";
+import SellerOrders from "./components/seller/SellerOrders";
+
 function App() {
   const isSellerPath = useLocation().pathname.includes("seller");
-  const showUserLogin = useAppContext();
+  const { showUserLogin, isSeller } = useAppContext();
 
   return (
     <div>
@@ -34,6 +41,60 @@ function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/add-address" element={<AddAdress />} />
           <Route path="/my-orders" element={<MyOrders />} />
+
+          {/* Seller Dashboard & Auth Routes */}
+          <Route path="/seller/login" element={<SellerLogin />} />
+          <Route path="/seller/signup" element={<SellerSignUp />} />
+
+          {/* Seller Dashboard Routes */}
+          <Route
+            path="/seller"
+            element={
+              isSeller ? (
+                <SellerLayout>
+                  <AddProduct />
+                </SellerLayout>
+              ) : (
+                <SellerLogin />
+              )
+            }
+          />
+          <Route
+            path="/seller/add-product"
+            element={
+              isSeller ? (
+                <SellerLayout>
+                  <AddProduct />
+                </SellerLayout>
+              ) : (
+                <SellerLogin />
+              )
+            }
+          />
+          <Route
+            path="/seller/product-list"
+            element={
+              isSeller ? (
+                <SellerLayout>
+                  <ProductList />
+                </SellerLayout>
+              ) : (
+                <SellerLogin />
+              )
+            }
+          />
+          <Route
+            path="/seller/orders"
+            element={
+              isSeller ? (
+                <SellerLayout>
+                  <SellerOrders />
+                </SellerLayout>
+              ) : (
+                <SellerLogin />
+              )
+            }
+          />
         </Routes>
       </div>
       {!isSellerPath && <Footer />}

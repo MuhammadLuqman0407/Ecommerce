@@ -108,11 +108,17 @@ export const AppContextProvider = ({children}) => {
     };
 
     const fetchProducts = async ()=> {
-        setProducts(dummyProducts);
+        setProducts(dummyProducts.map(item => ({ ...item, inStock: item.inStock !== false })));
     }
 
     // add products to cart
     const addToCart = (itemId) => {
+         const product = products.find((p) => p._id === itemId);
+         if (product && product.inStock === false) {
+             toast.error("Item is out of stock!");
+             return;
+         }
+
          let cartData = structuredClone(cartItems);
 
          if(cartData[itemId]){
@@ -172,11 +178,26 @@ export const AppContextProvider = ({children}) => {
         fetchProducts()
     }, [])
 
+    const toggleStock = (productId) => {
+        setProducts(prev =>
+            prev.map(p => {
+                if (p._id === productId) {
+                    const currentStock = p.inStock !== false;
+                    const newStock = !currentStock;
+                    toast.success(`${p.name} is now ${newStock ? 'In Stock' : 'Out of Stock'}`);
+                    return { ...p, inStock: newStock };
+                }
+                return p;
+            })
+        );
+    };
+
     const value = {navigate, user, setUser, setIsSeller, isSeller,
-        showUserLogin, setShowUserLogin, products, currency, 
+        showUserLogin, setShowUserLogin, products, setProducts, currency, 
         addToCart, updateCartItem, removeFromCart, cartItems,
         searchQuery, setSearchQuery, getCartAmount, getCartCount,
-        userAddress, setUserAddress, orders, setOrders, placeOrder
+        userAddress, setUserAddress, orders, setOrders, placeOrder,
+        toggleStock
     };
 
     return (

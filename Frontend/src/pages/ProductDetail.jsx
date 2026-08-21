@@ -136,8 +136,14 @@ const ProductDetail = () => {
 
                     {/* Action Buttons */}
                     <div className="mt-8 flex flex-col sm:flex-row gap-3">
-                        {/* Add to Cart / Quantity */}
-                        {!productQty ? (
+                        {product.inStock === false ? (
+                            <button
+                                disabled
+                                className="flex-1 py-3 px-6 bg-gray-200 border-2 border-gray-200 rounded-lg text-gray-500 font-semibold text-sm sm:text-base cursor-not-allowed text-center"
+                            >
+                                Out of Stock
+                            </button>
+                        ) : !productQty ? (
                             <button
                                 onClick={() => addToCart(product._id)}
                                 className="flex-1 py-3 px-6 border-2 border-gray-200 rounded-lg text-gray-700 font-medium text-sm sm:text-base hover:border-primary hover:text-primary transition-all duration-200 cursor-pointer"
