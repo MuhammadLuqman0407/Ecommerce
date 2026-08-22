@@ -44,10 +44,10 @@ const Navbar = () => {
     };
 
     useEffect(() => {
-        if(searchQuery.length > 0){
+        if (searchQuery.length > 0) {
             navigate('/products');
         }
-    },[searchQuery]);
+    }, [searchQuery]);
 
     React.useEffect(() => {
         const handleClickOutside = (event) => {
