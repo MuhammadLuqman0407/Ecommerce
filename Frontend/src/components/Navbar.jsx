@@ -99,7 +99,7 @@ const Navbar = () => {
             >
                 <NavLink to="/" onClick={closeMenu} className="w-full py-2 text-center hover:text-primary">Home</NavLink>
                 <NavLink to="/products" onClick={closeMenu} className="w-full py-2 text-center hover:text-primary">All Products</NavLink>
-                <NavLink to="/contact" onClick={closeMenu} className="w-full py-2 text-center hover:text-primary">Contact</NavLink>
+                {/* <NavLink to="/contact" onClick={closeMenu} className="w-full py-2 text-center hover:text-primary">Contact</NavLink> */}
 
                 {user && (
                     <NavLink to="/my-orders" onClick={closeMenu} className="w-full py-2 text-center hover:text-primary">My Orders</NavLink>
