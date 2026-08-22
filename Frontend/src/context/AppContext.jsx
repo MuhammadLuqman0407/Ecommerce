@@ -2,7 +2,6 @@ import {createContext, useEffect} from "react";
 import { useState } from "react";
 import {useNavigate} from "react-router-dom";
 import { useContext } from "react";
-import App from "../App";
 import { dummyProducts } from "../assets/assets";
 import toast from "react-hot-toast";
 
